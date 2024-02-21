@@ -29,7 +29,7 @@ const googleClient = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 const storage = multer.memoryStorage({
   destination: function (req, file, cb) {
-    cb(null, `${__dirname}/../linksharing/nonAuthImgs`); 
+    cb(null, `${__dirname}/linksharing/nonAuthImgs`); 
   },
   filename: function (req, file, cb) {
 
@@ -158,7 +158,7 @@ router.put("/updateLinks", verifyToken,upload.array('files'),async (req,res)=>{
               const devLinkItem = DevLink.items.find(item => item.id === itemId);
               if (item.file && devLinkItem) {
                 // If the file already exists, and is uploaded then remove the existing file
-                fs.unlink(`${__dirname}/../linksharing/nonAuthFiles/${devLinkItem.url}`, (unlinkError) => {
+                fs.unlink(`${__dirname}/linksharing/nonAuthFiles/${devLinkItem.url}`, (unlinkError) => {
                   if (unlinkError) {
                     console.error('Error removing existing file:', unlinkError);
                     return Promise.reject({ error: 'Internal server error' });
@@ -170,7 +170,7 @@ router.put("/updateLinks", verifyToken,upload.array('files'),async (req,res)=>{
     
               // Write the new file
               await new Promise((resolve, reject) => {
-                fs.writeFile(`${__dirname}/../linksharing/nonAuthFiles/${generatedId}.${mime.extension(file.mimetype)}`, file.buffer, (err) => {
+                fs.writeFile(`${__dirname}/linksharing/nonAuthFiles/${generatedId}.${mime.extension(file.mimetype)}`, file.buffer, (err) => {
                   if (err) {
                     console.log(err);
                     reject(err);
@@ -204,7 +204,7 @@ router.put("/updateLinks", verifyToken,upload.array('files'),async (req,res)=>{
           // Unlink files for items that need to be removed
     
           itemsToRemove.forEach(itemToRemove => {
-            fs.unlink(`${__dirname}/../linksharing/nonAuthFiles/${itemToRemove.url}`, (unlinkError) => {
+            fs.unlink(`${__dirname}/linksharing/nonAuthFiles/${itemToRemove.url}`, (unlinkError) => {
               if (unlinkError) {
                 console.error('Error removing existing file:', unlinkError);
               } else {
@@ -527,7 +527,7 @@ res
           }
              if (existingDevlink.profile_picture) {
               try {
-                fs.unlink(`${__dirname}/../linksharing/nonAuthImgs/${existingDevlink.profile_picture}`, (unlinkError) => {
+                fs.unlink(`${__dirname}/linksharing/nonAuthImgs/${existingDevlink.profile_picture}`, (unlinkError) => {
                     if (unlinkError) {
                         console.error('Error removing existing profile picture:', unlinkError);
                         return res.status(500).json({ error: 'Internal server error' });
@@ -540,7 +540,7 @@ res
                 return res.status(500).json({ error: 'Internal server error' });
             }
           }
-            fs.writeFile(`${__dirname}/../linksharing/nonAuthImgs/${generatedId}.${mime.extension(mimetype)}`, buffer, (err) => {
+            fs.writeFile(`${__dirname}/linksharing/nonAuthImgs/${generatedId}.${mime.extension(mimetype)}`, buffer, (err) => {
                 if (err) {
                     console.log(err);
                     return res.status(500).json({ error: 'Internal server error' });
