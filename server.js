@@ -4,7 +4,7 @@ var path = require('path');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const app = express();
-const cors = require('cors'); 
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
@@ -18,31 +18,32 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 app.use(express.json({ limit: '10mb' }));
 const verifyToken = require("./routes/middleware/auth.cjs");
-const {port,allowedDomains,mongodb_connect} =  config;
+const { port, allowedDomains, mongodb_connect } = config;
 
 
 
 app.use(cors({
-  origin: "http://localhost:5000",
+  origin: "http://localhost:3000",
   credentials: true,
 }));
 app.use(helmet());
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      imgSrc: ["'self'", '*'],
-      data: ['data:', 'blob:'],
-    },
-  })
-);
+
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'"],
+    styleSrc: ["'self'"],
+    imgSrc: ["'self'", "blob:"],
+  },
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname)));
 
-app.use(express.static(path.join(__dirname,"linksharing")));
+app.use(express.static(path.join(__dirname, '..', "linksharing", 'build')));
 
 mongoose.connect(process.env.MONGODB_CONNECT, {
   useNewUrlParser: true
@@ -50,7 +51,7 @@ mongoose.connect(process.env.MONGODB_CONNECT, {
 
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'linksharing', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'linksharing', 'build', 'index.html'));
 });
 
 
@@ -60,19 +61,19 @@ app.post('/api/protected', verifyToken, (req, res) => {
 
 
 const db = mongoose.connection
-db.on("error",(error)=>{
-    console.log("error");
+db.on("error", (error) => {
+  console.log("error");
 })
-db.once("open",()=>{
-    console.log("db conntected")
+db.once("open", () => {
+  console.log("db conntected")
 })
 app.use((req, res, next) => {
-    res.set('Cache-Control', 'no-store');
-    next();
-  });
-  
-  app.use("/api",api);
+  res.set('Cache-Control', 'no-store');
+  next();
+});
 
-  app.listen(process.env.PORT,()=>{
-    console.log("server started");
-  })
+app.use("/api", api);
+
+app.listen(process.env.PORT, () => {
+  console.log("server started");
+})
