@@ -23,11 +23,10 @@ const { port, allowedDomains, mongodb_connect } = config;
 
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "http://localhost:5000",
   credentials: true,
 }));
 app.use(helmet());
-
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
@@ -36,14 +35,13 @@ app.use(helmet.contentSecurityPolicy({
     imgSrc: ["'self'", "blob:"],
   },
 }));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname)));
 
-app.use(express.static(path.join(__dirname, '..', "linksharing", 'build')));
+app.use(express.static(path.join(__dirname, "linksharing")));
 
 mongoose.connect(process.env.MONGODB_CONNECT, {
   useNewUrlParser: true
@@ -51,7 +49,7 @@ mongoose.connect(process.env.MONGODB_CONNECT, {
 
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'linksharing', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'linksharing', 'index.html'));
 });
 
 

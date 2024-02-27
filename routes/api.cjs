@@ -4,14 +4,13 @@ const router = express.Router();
 const path = require("path");
 const multer = require('multer');
 const mime = require('mime-types');
-const dotenv = require('dotenv');
-dotenv.config();
 const cookieParser = require('cookie-parser');
 const sizeOf = require('image-size');
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const fs = require("fs")
 const nodemailer = require('nodemailer');
+
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const verifyToken = require('./middleware/auth.cjs');
@@ -19,6 +18,7 @@ const { generateMatchExp } = require("../config/validatePlatforms");
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const { AuditLog } = require("../models/dbSchema.cjs");
+
 const { User } = require("../models/dbSchema.cjs");
 const { DevLinks } = require("../models/dbSchema.cjs");
 const { OAuth2Client } = require('google-auth-library');
@@ -30,7 +30,7 @@ const googleClient = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 const storage = multer.memoryStorage({
   destination: function (req, file, cb) {
-    cb(null, `${__dirname}/../../linksharing/public/nonAuthImgs`);
+    cb(null, `${__dirname}/../linksharing/nonAuthImgs`);
   },
   filename: function (req, file, cb) {
 
@@ -159,7 +159,7 @@ router.put("/updateLinks", verifyToken, upload.array('files'), async (req, res) 
               const devLinkItem = DevLink.items.find(item => item.id === itemId);
               if (item.file && devLinkItem) {
                 // If the file already exists, and is uploaded then remove the existing file
-                fs.unlink(`${__dirname}/../../linksharing/public/nonAuthFiles/${devLinkItem.url}`, (unlinkError) => {
+                fs.unlink(`${__dirname}/../linksharing/nonAuthFiles/${devLinkItem.url}`, (unlinkError) => {
                   if (unlinkError) {
                     console.error('Error removing existing file:', unlinkError);
                     return Promise.reject({ error: 'Internal server error' });
@@ -171,7 +171,7 @@ router.put("/updateLinks", verifyToken, upload.array('files'), async (req, res) 
 
               // Write the new file
               await new Promise((resolve, reject) => {
-                fs.writeFile(`${__dirname}/../../linksharing/public/nonAuthFiles/${generatedId}.${mime.extension(file.mimetype)}`, file.buffer, (err) => {
+                fs.writeFile(`${__dirname}/../linksharing/nonAuthFiles/${generatedId}.${mime.extension(file.mimetype)}`, file.buffer, (err) => {
                   if (err) {
                     console.log(err);
                     reject(err);
@@ -206,7 +206,7 @@ router.put("/updateLinks", verifyToken, upload.array('files'), async (req, res) 
       // Unlink files for items that need to be removed
 
       itemsToRemove.forEach(itemToRemove => {
-        fs.unlink(`${__dirname}/../../linksharing/public/nonAuthFiles/${itemToRemove.url}`, (unlinkError) => {
+        fs.unlink(`${__dirname}/../linksharing/nonAuthFiles/${itemToRemove.url}`, (unlinkError) => {
           if (unlinkError) {
             console.error('Error removing existing file:', unlinkError);
           } else {
@@ -288,7 +288,7 @@ router.put("/updateUser", async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: 'user not found!' });
     }
-    if (Object.keys(props).length > 0) {
+    if (Object.keys(props).length !== 0) {
       User.findOneAndUpdate(
         { _id: id },
         {
@@ -297,7 +297,6 @@ router.put("/updateUser", async (req, res) => {
         { new: true }
       )
         .then((user) => {
-          console.log(user)
           if (!user) {
             return res.status(404).json({ message: 'user not found or updated!' });
           }
@@ -530,7 +529,7 @@ router.post("/updateProfile", upload.single('profileBlob'), verifyToken, async (
           }
           if (existingDevlink.profile_picture) {
             try {
-              fs.unlink(`${__dirname}/../../linksharing/public/nonAuthImgs/${existingDevlink.profile_picture}`, (unlinkError) => {
+              fs.unlink(`${__dirname}/../linksharing/nonAuthImgs/${existingDevlink.profile_picture}`, (unlinkError) => {
                 if (unlinkError) {
                   console.error('Error removing existing profile picture:', unlinkError);
                   return res.status(500).json({ error: 'Internal server error' });
@@ -543,7 +542,7 @@ router.post("/updateProfile", upload.single('profileBlob'), verifyToken, async (
               return res.status(500).json({ error: 'Internal server error' });
             }
           }
-          fs.writeFile(`${__dirname}/../../linksharing/public/nonAuthImgs/${generatedId}.${mime.extension(mimetype)}`, buffer, (err) => {
+          fs.writeFile(`${__dirname}/../linksharing/nonAuthImgs/${generatedId}.${mime.extension(mimetype)}`, buffer, (err) => {
             if (err) {
               console.log(err);
               return res.status(500).json({ error: 'Internal server error' });
