@@ -1,0 +1,313 @@
+.membership-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+.membership-navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.membership-inner-container h1{
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: center;
+    text-transform: capitalize;
+}
+.membership-schema-field p{
+    font-size: var(--font-medium-size);
+    color: var(--text-color);
+    height: 60px;
+}
+.membership-schemas-container{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+}
+.membership-inner-container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.membership-schema .ant-descriptions-row{
+    display: flex;
+    width: 100%;
+}
+.membership-schema .ant-descriptions-item-label{
+    width: 50%;
+}
+
+.membership-schema-field{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid var(--background-color);
+}
+.membership-schema-field .ant-descriptions{
+}
+.membership-check{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--text-color);
+}
+
+.membership-check svg{
+    width: 80%;
+    height: 80%;
+    fill: var(--background-color);
+}
+
+.membership-price-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.membership-price-container span{
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-size: var(--font-large-size);
+}
+.membership-schema .membership-schema-field:first-child{
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.membership-schema.about{
+    padding: 24px;
+}
+.membership-schema .membership-schema-field:first-child button{
+    width: 80%;
+}
+
+
+.membership-schemas-container table {
+  width: 80%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: auto;
+}
+
+.membership-schemas-container td,
+.membership-schemas-container th {
+  border-right: 1px solid #E8E8E8;
+  empty-cells: show;
+  padding: 10px;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E8E8;
+  color: #808080;
+  font-size: 15px;
+}
+.membership-card{
+    width: calc(100% / 3);
+}
+.membership-container tr > th.membership-card , .membership-container tr > td.membership-card{
+    border-left: 1px solid #E8E8E8 !important;
+}
+.membership-container thead tr .membership-card{
+  position: relative;
+}
+.membership-container thead tr .membership-card{
+  padding: 10px;
+}
+.membership-container tr .membership-card{
+border-left: 1px solid #E8E8E8;
+}
+.membership-container .current-tier > span{
+  background-color: var(--text-color);
+  position: absolute;
+  border-radius: 10px 10px 0px 0px;
+  width: 100%;
+ padding: 2px;
+ min-height: 40px;
+  bottom: 100%;
+  color: var(--background-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+}
+.membership-card .price-now span{
+  font-size: var(--font-large-size);
+  color: var(--secoundary-side-color);
+}
+.membership-card{
+    background-color: var(--background-color);
+    text-align: center;
+}
+.membership-schemas-container tbody tr:nth-child(odd) {
+  display: none;
+}
+
+.membership-schemas-container .compare-row {
+  background: #F7F7F7;
+}
+.membership-schemas-container .compare-row td:first-child{
+   width: calc(100% / 3);
+}
+.fa-check {
+  color: #69C7F1;
+}
+
+.membership-schemas-container th {
+  font-weight: normal;
+  padding: 0;
+  border-top: 0px solid #E8E8E8;
+  border-bottom: 0px solid #E8E8E8;
+}
+
+.membership-schemas-container tr td:first-child {
+  text-align: left;
+  padding: 15px;
+  border-left: 1px solid #E8E8E8;
+  border-top: 1px solid #E8E8E8;
+}
+
+.membership-schemas-container .product,
+.membership-schemas-container .tl {
+  color: #FFF;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.membership-schemas-container .tl2 {
+  border-right: 0;
+}
+
+.membership-schemas-container .product {
+  background: #69C7F1;
+  height: 40px;
+  font-size: 1.6em;
+}
+
+.membership-schemas-container .price-info {
+  padding: 15px;
+}
+
+.membership-schemas-container .price-now,
+.membership-schemas-container .price-now span {
+  color: #808080;
+}
+
+.membership-schemas-container .price-now span {
+  font-size: 36px;
+  color: #545454;
+}
+
+.membership-schemas-container .price-now p {
+  font-size: 14px;
+  text-align: center;
+  line-height: 16px;
+  display: inline;
+}
+
+.membership-schemas-container .price-buy {
+  background: #EC671A;
+  padding: 10px 20px;
+  font-size: 14px;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+  text-transform: uppercase;
+  margin: 5px 0 10px 0;
+  letter-spacing: 1px;
+  cursor: pointer;
+  -webkit-transition: .3s all ease;
+  transition: .3s all ease;
+}
+
+.membership-schemas-container .price-buy:hover {
+  background: #E84D00;
+}
+
+@media screen and (min-width: 721px) and (max-width: 1000px) {
+  .table_ul li {
+    letter-spacing: 0px;
+  }
+  .membership-schemas-container .price-now span {
+    font-size: 32px;
+  }
+  .membership-schemas-container .price-now p {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .table_ul {
+    padding: 0px;
+  }
+  .table_ul li {
+    font-size: 10px;
+    line-height: 16px;
+    padding: 3px 0;
+  }
+  .membership-schemas-container {
+    max-width: 100%;
+  }
+  .membership-schemas-container td:first-child,
+  .membership-schemas-container th:first-child {
+    display: none;
+  }
+  .membership-schemas-container tbody tr:nth-child(odd) {
+    display: table-row;
+    background: #F7F7F7;
+  }
+  .membership-schemas-container .row {
+    background: #FFF;
+  }
+  .membership-schemas-container td,
+  .membership-schemas-container th {
+    border: 1px solid #E8E8E8;
+    border-top: none;
+    padding: 10px;
+  }
+  .price-info {
+    border-top: 0 !important;
+    padding: 10px 0 !important;
+  }
+  .price-info p {
+    line-height: 8px;
+    font-size: 8px !important;
+  }
+  .membership-schemas-container .compare-row {
+    background: #ffffff;
+  }
+  .membership-schemas-container .price-now p {
+    display: block;
+  }
+  .membership-schemas-container .price-now span {
+    font-size: 24px;
+  }
+  .membership-schemas-container .qbse {
+    font-size: 1.2em;
+  }
+  .membership-schemas-container td {
+    font-size: 14px;
+  }
+  .membership-schemas-container th {
+    font-size: 14px;
+  }
+} table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: auto;
+  }
+  

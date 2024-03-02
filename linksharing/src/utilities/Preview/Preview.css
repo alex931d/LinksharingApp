@@ -1,0 +1,95 @@
+.preview-container{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--secoundary-color);
+}
+.preview-container-banner{
+    width: 100%;
+    height: 50%;
+    min-height: 200px;
+    background-color: var(--light-purple);
+    border-radius: 0px 0px 5% 5%;
+    padding: 20px;
+    position: relative;
+}
+.preview-container-banner header{
+ width: 100%;
+ min-height: 45px;
+}
+.preview-container-banner nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+    padding: 10px;
+    border-radius: 8px;
+}
+.video-container-outer{
+    border-radius: 18px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.preview-card{
+    width: 25%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 20px -10px var(--secoundary-side-color);
+    top: 60%;
+    min-height: 400px;
+    border-radius: 8px;
+    min-width: 300px;
+    background-color: var(--background-color);
+}
+.preview-card .profile-name{
+font-size: 1.8rem
+}
+.shareModal-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    align-items: center;
+}
+.preview-card-inner{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 30px;
+    height: 100%;
+}
+.preview-card-inner-first{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+.preview-card-inner-first img{
+  width: 25%;
+  border: 4px solid var(--light-purple);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.preview-card-inner-last{
+    height: 100%;
+    width: 100%;
+}
+.preview-card-inner-last ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+@media screen and (max-width: 500px){
+    .preview-container .preview-container-banner{
+      background-color: transparent;
+    }
+  }

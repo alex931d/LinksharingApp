@@ -1,0 +1,32 @@
+.social-link{
+    background-color: var(--text-color);
+    min-height: 45px;
+    width: 80%;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
+    border-radius: 8px;
+    overflow-x: hidden;
+}
+.social-link-first-container{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.social-link-first-container img{
+    aspect-ratio: 1/1;
+    width: 25px;
+}
+.social-link-first-container p{
+    font-size: var(--font-medium-size);
+    font-weight: 500;
+    color: var(--under-text-color);
+    text-overflow: ellipsis; 
+overflow: hidden; 
+white-space: nowrap;
+}
+.social-link svg{
+    fill: var(--background-color);
+}

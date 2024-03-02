@@ -1,0 +1,25 @@
+.side-menu-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.ant-switch-inner > span{
+    fill: var(--secoundary-color);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.profile-picture-generator-container{
+    padding: 20px;
+}
+.profile-picture-change-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}

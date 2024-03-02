@@ -1,0 +1,76 @@
+.editor-container{
+    width: 50%;
+    height: 100%;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    position: relative;
+
+}
+.editor{
+    max-height: calc(100vh - 120px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    position: relative;
+    flex: 1;
+    overflow-y: auto;
+ 
+}
+.dropdown-select .ant-select{
+    width: 100%;
+}
+.editor-header{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.editor-header h2{
+    font-size: 1.9rem;
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.editor-about{
+    font-size: var(--font-size);
+    font-weight: 500;
+    color: var(--secoundary-text-color);
+    text-transform: capitalize;
+}
+.editor-area{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+ 
+}
+.links-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.editor-bottom{
+    width: 100%;
+    max-height: 120px;
+    position: sticky;
+    border-radius: 0px 0px 8px 8px;
+    bottom: -20px;
+    left: 0;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-top: 2px solid var(--secoundary-color);
+}
+.editor-bottom-inner{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+.editor .ant-tabs-content .main-btn{
+    margin-bottom: 20px;
+    margin-top: 10px;
+    width: 100%;
+}

@@ -1,0 +1,105 @@
+.link-container{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 8px;
+    background-color: var(--secoundary-color);
+}
+.link-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.link-header > div{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.link-header span{
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-size: var(--font-size);
+}
+.link-header button{
+    font-size: var(--font-size);
+    text-transform: capitalize;
+}
+.input-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-icon img{
+    width: 20px;
+    height: 20px;
+    aspect-ratio: 1/1;
+}
+.link-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-field{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 2s ease-in;
+}
+.drag-over{
+outline: 2px solid var(--light-purple);
+border-radius: 8px;
+}
+.form-field .input-field{
+    background-color: var(--background-color);
+    border: 2px solid var(--secoundary-side-color);
+    border-radius: 8px;
+    display: flex;
+    min-height: 37px;
+    width: 100%;
+    align-items: center;
+}
+.input-icon{
+    width: 40px;
+    height: 100%;
+}
+input{
+    font-size: var(--font-size);
+}
+.input-field .ant-select{
+    width: 100%;
+    height: 37px;
+    border: none;
+}
+.input-field .ant-select-selector{
+    border: none !important;
+}
+.form-field .input-field input::placeholder{
+    color: var(--text-color);
+    text-transform: capitalize;
+}
+.form-field .input-field.valid{
+outline: 2px solid greenyellow;
+}
+.form-field .input-field.error{
+    outline: 2px solid red;
+}
+.form-field .input-field input{
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 37px;
+    color: var(--text-color);
+}
+.input-field input:focus-visible{
+    outline: none;
+}
+.input-field:focus-within{
+    border: 2px solid var(--light-purple);
+    box-shadow: 2px -1px 44px -18px rgba(100,58,255,0.75);
+}
+.input-field input
+.input-field:hover{
+border: 2px solid var(--light-purple);
+}

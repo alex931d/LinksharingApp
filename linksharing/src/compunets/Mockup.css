@@ -1,0 +1,89 @@
+.mockup-container{
+    width: 50%;
+    height: 100%;
+    background-color: var(--background-color);
+    border-radius: 8px;
+}
+.mockup-container-inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mockup{
+    height: 90%;
+    aspect-ratio: 1/ 2;
+    min-width: 230px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+
+}
+.mockup .ant-btn{
+    width: 80%;
+    overflow: hidden;
+    min-height: 42px;
+}
+
+.skeleton-bar{
+    width: 80%;
+    height: 100%;
+    border-radius: 7px;
+    background-color: var(--mockup-skeleton-color);
+    
+}
+#mockup-inner{
+    fill: var(--secoundary-color);
+}
+.mockup-inner{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+     height: 100%;
+}
+.social-container{
+    width: 100%;
+    height: 100%;
+}
+.profile-container{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.profile-pic{
+    width: 70px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 2px solid var(--light-purple);
+}
+.profile-name{
+    font-weight: 600;
+    text-align: center;
+    font-size: var(--font-large-size);
+    color: var(--text-color);
+}
+.profile-email{
+    font-weight: 400;
+    text-align: center;
+    color: var(--secoundary-text-color);
+}
+.social-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.social-link-wrapper{
+    display: flex;
+    height: 100%;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

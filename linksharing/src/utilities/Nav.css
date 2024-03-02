@@ -1,0 +1,89 @@
+.menu{
+    width: 100%;
+    min-height: 55px;
+}
+.inner-menu{
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 20px;
+    border-radius: 8px;
+}
+.vertical-menu .menu-items{
+ animation-name: hoverIn;
+
+ animation-duration: 0.5s;
+}
+.center{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.last-link-menu{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.vertical-menu{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+    align-items: center;
+    overflow: hidden;
+}
+.vertical-menu img{
+    min-height: 24px;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+.inner-menu nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.logo-container{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.logo-container + span{
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+.inner-menu nav ul{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.inner-menu nav li {
+    width: auto;
+    height: auto;
+}
+.menu-btn{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: none;
+    background-color: transparent;
+    color: var(--text-color);
+}
+.menu-btn.active{
+    background-color: var(--light-light-purple);
+    color: var(--light-purple);
+}
+.look-btn{
+    background-color: transparent;
+    border: 2px solid var(--light-purple);
+    color: var(--light-purple);
+    font-weight: 500;
+}
+
+@keyframes hoverIn{
+    0%{
+     transform: translateX(50%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
