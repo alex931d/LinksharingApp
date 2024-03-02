@@ -1,71 +1,99 @@
 const mongoose = require("mongoose");
 const UserAuditLog = new mongoose.Schema({
-  userId:{
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  eventType:{
-    type:String,
-    required:true,
+  eventType: {
+    type: String,
+    required: true,
   },
-  eventDetails:{
-    type:String,
+  eventDetails: {
+    type: String,
     required: false,
   },
-  timeStamp:{
-    type:Date,
+  timeStamp: {
+    type: Date,
     default: Date.now(),
-    required:false
+    required: false
   },
 })
-const UserSchema = new mongoose.Schema({
-user_email:{
-  type: String,
-  required: true
-},
-user_password:{
-  type:String,
-  required: true
-},
-user_role:{
-  type:String,
-  required:true
-},  
-isPaidTier:{
-  type: Boolean,
-  required:true,
-},
-avatar: {
-  type: String,
-  required: true,
-  default: '',
-},
-loggedInWithGoogle: {
-  type: Boolean,
-  required: true,
-  default: false,
-},
-user_password_reset:[{
-  token:{
-    type:String,
-    required:false
-  },
-  date:{
-    type:Date,
-    required:false,
+const GlobalResetSchema = new mongoose.Schema({
+  date: {
+    type: Date,
     default: Date.now(),
+    required: false,
   },
-}],
+  note: {
+    type: String,
+    required: true,
+  },
+})
+const SettingsSchema = new mongoose.Schema({
+  enableResetUsersOneMonthCronJob: {
+    type: Boolean,
+    default: true,
+    required: false,
+  }
+})
+const UserSchema = new mongoose.Schema({
+  user_email: {
+    type: String,
+    required: true
+  },
+  user_password: {
+    type: String,
+    required: true
+  },
+  user_role: {
+    type: String,
+    required: true
+  },
+  isPaidTier: {
+    type: Boolean,
+    required: true,
+  },
+  avatar: {
+    type: String,
+    required: true,
+    default: '',
+  },
+  loggedInWithGoogle: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  user_password_reset: [{
+    token: {
+      type: String,
+      required: false
+    },
+    date: {
+      type: Date,
+      required: false,
+      default: Date.now(),
+    },
+  }],
 
-devLinks: [{
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'DevLinks',
-}],
-firstLogin: {
-  type: Boolean,
-  required: true,
-  default: true, 
-},
+  devLinks: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'DevLinks',
+  }],
+  firstLogin: {
+    type: Boolean,
+    required: true,
+    default: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    required: false
+  },
+  lastReset: {
+    type: Date,
+    default: Date.now(),
+    required: false,
+  }
 });
 const DevLinksSchema = new mongoose.Schema({
 
@@ -77,7 +105,7 @@ const DevLinksSchema = new mongoose.Schema({
       },
       itemType: {
         type: String,
-        enum: ['links', 'medias', 'notes','files'],
+        enum: ['links', 'medias', 'notes', 'files'],
         required: true,
       },
       platform: {
@@ -87,26 +115,26 @@ const DevLinksSchema = new mongoose.Schema({
         type: String,
       },
       name: {
-        type:String,
+        type: String,
       },
-      font_family:{
-        type:String,
+      font_family: {
+        type: String,
         default: null,
       },
-      font_size:{
-        type:Number,
+      font_size: {
+        type: Number,
         default: null,
       },
-      foreground:{
-        type:String,
+      foreground: {
+        type: String,
         default: null,
       },
-      link_color:{
-        type:String,
+      link_color: {
+        type: String,
         default: null,
       },
       fileType: {
-        type:String
+        type: String
       },
       type: {
         type: String,
@@ -115,14 +143,14 @@ const DevLinksSchema = new mongoose.Schema({
       content: {
         type: String,
       },
-  
+
     },
   ],
   name: {
-    type:String,
+    type: String,
     required: false
   },
-  last_name:{
+  last_name: {
     type: String,
     required: false
   },
@@ -130,11 +158,11 @@ const DevLinksSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  profile_picture:{
+  profile_picture: {
     type: String,
     required: false,
   },
-  enable_color_customization:{
+  enable_color_customization: {
     type: Boolean,
     required: false,
   },
@@ -147,6 +175,8 @@ const DevLinksSchema = new mongoose.Schema({
 
 
 const DevLinks = mongoose.model("DevLinks", DevLinksSchema);
-const User = mongoose.model("User",UserSchema);
-const AuditLog = mongoose.model("AuditLog",UserAuditLog);
-module.exports = {User,DevLinks,AuditLog};
+const User = mongoose.model("User", UserSchema);
+const AuditLog = mongoose.model("AuditLog", UserAuditLog);
+const Settings = mongoose.model("Settings", SettingsSchema);
+const GlobalResets = mongoose.model("GlobalResets", GlobalResetSchema);
+module.exports = { User, DevLinks, AuditLog, Settings, GlobalResets };

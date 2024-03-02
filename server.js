@@ -12,6 +12,8 @@ const helmet = require('helmet');
 const { User } = require("./models/dbSchema.cjs");
 const { DevLinks } = require("./models/dbSchema.cjs");
 const config = require("./config/config")
+const { resetAfterOneMonthCronJob } = require('./cron-jobs/reset-job');
+
 const api = require("./routes/api.cjs");
 dotenv.config();
 const cookieParser = require('cookie-parser');
@@ -47,6 +49,7 @@ mongoose.connect(process.env.MONGODB_CONNECT, {
   useNewUrlParser: true
 });
 
+resetAfterOneMonthCronJob();
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'linksharing', 'index.html'));
